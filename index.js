@@ -41,6 +41,9 @@ if('development' == app.get('env')) {
 }
 
 /* ./routes/routes.js */
+app.get('/', function(req, res){
+	res.send('hello world');
+});
 
 // app.use(app.router);
 app.use(serveStatic(__dirname + '/public'));
