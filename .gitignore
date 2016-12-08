@@ -1,6 +1,5 @@
 *.class
 
-# Package Files #
 *.jar
 *.war
 *.ear
@@ -9,7 +8,30 @@
 .idea
 .project
 node_modules
+jspm_packages
 ntopic.iml
 ntopic.sqlite
 start.bat
 start.sh
+
+logs
+*.log
+npm-debug.log*
+
+pids
+*.pid
+*.seed
+
+lib-cov
+
+coverage
+
+.nyc_output
+
+.grunt
+
+.lock-wscript
+
+.npm
+
+.node_repl_history
