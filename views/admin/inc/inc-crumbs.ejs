@@ -1,0 +1,10 @@
+<ul class="breadcrumb">
+	<% breadcrumbs.forEach(function(crumb) { %>
+		<li><span class="divider">/</span></li>
+		<% if (crumb.href) { %>
+			<li><a href="<%= crumb.href %>"><%= crumb.label %></a></li>
+		<% } else { %>
+			<li><%= crumb.label %></li>
+		<% } %>
+	<% }); %>
+</ul>

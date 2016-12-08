@@ -1,0 +1,38 @@
+<% include ./inc/inc-front-head %>
+<div class="blog">
+	<div class="container">
+		<div class="row">
+			<div class="span8">
+				<% include ./inc/inc-adv01 %>
+				<% topics.forEach(function(tpc) { %>
+				<div class="entry">
+					<h4>
+						[<a href="./index-<%= tpc.catg %>.html"><%= catgValue(tpc.catg) %></a>] <a href="./topic-<%= tpc.catg %>-<%= tpc.id %>.html" rel="bookmark"><%= tpc.title %></a>
+					</h4>
+					<p><%= tpc.summary %> [&hellip;]</p>
+					<div class="clearfix"></div>
+					<p class="meta">
+						<i class="icon-calendar"></i> <%= dateFormat(tpc.gmt_modify) %>
+						<% if(!vclean) { %>
+						- <i class="icon-comment"></i> <a href="./topic-<%= tpc.catg %>-<%= tpc.id %>.html#respond"><%= tpc.reply %></a>
+						- <i class="icon-film"></i> <%= tpc.visit %>
+						<% } %>
+						<a href="./topic-<%= tpc.catg %>-<%= tpc.id %>.html" class="pull-right readmore">阅读全文 &raquo;</a>
+					</p>
+					<div class="clearfix"></div>
+				</div>
+				<% }); %>
+				<% include ./inc/inc-adv02 %>
+				<!--
+					<div class="pagination">
+						<span class='page-numbers current'>1</span> <a class='page-numbers' href=''>2</a> <span class="page-numbers dots">&hellip;</span> <a class='page-numbers' href=''>6</a> <a class="next page-numbers" href="">Next</a>
+					</div>
+				-->
+			</div>
+			<div class="span4">
+				<% include ./inc/inc-front-slide %>
+			</div>
+		</div>
+	</div>
+</div>
+<% include ./inc/inc-front-foot %>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>查看主题</title> <% include ./inc/inc-resources %>
+<style type="text/css">
+html,body {
+	padding: 10px;
+}
+
+.article-title {
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.article-summary {
+	font-size: 14px;
+	padding: 10px;
+	*padding-top: 10px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.article-content {
+	font-size: 14px;
+}
+</style>
+</head>
+<body>
+	<div class="article-title"><%= topic.title||'' %></div>
+	<hr />
+	<div class="article-summary"><%= topic.summary||'' %></div>
+	<div class="article-content"><%- topic.content||'' %></div>
+</body>

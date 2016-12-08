@@ -1,0 +1,80 @@
+<% include ./inc/inc-tmpt-head %>
+<style type="text/css">
+.radius-block:after {
+	content: "<%= title %>";
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var ue = UE.getEditor("content");
+		
+		$("#btn-clean-style").click(function(e) {
+			e.preventDefault();
+			var content = ue.getContent();
+			// var reg = /(<td)s(?:s*w*?s*=s*".+?")*?s*?(>)/;
+			content = content.replace(/<([a-zA-Z1-6]+)(\s*[^>]*)?>/g, "<$1>")
+			content = content.replace("    ", "	");
+			
+			ue.setContent(content);
+		});
+		
+		$("#topicForm").submit(function(e) {
+			e.preventDefault();
+			jQuery.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/admin/topic-store.html",
+				data : $("#topicForm").serialize(),
+				beforeSend : function() {
+					fadeProgressModal(true);
+				},
+				success : function(result) {
+					fadeProgressModal(false);
+
+					if (result.success) {
+						fadeSuccessModal(result);
+						$("#title").val("");
+						$("#summary").val("");
+						ue.setContent("");
+					} else {
+						fadeFailureModal(result);
+					}
+				}
+			});
+		});
+	});
+</script>
+
+<form id="topicForm" class="form-horizontal" name="topicForm" method="post">
+	<div class="radius-block">
+		<div class="control-group">
+			<label for="catg"><span class="icon-chevron-right"></span><strong>主题类型</strong>-必选项！</label>
+			<select id="catg" name="catg" class="span3">
+				<% catgs.forEach(function(catg, idx, catgs) { %>
+					<option value="<%= catg.key %>"><%= catg.value %></option>
+				<% }) %>
+			</select>
+		</div>
+		<div class="control-group">
+			<label for="title"><span class="icon-chevron-right"></span><strong>主题标题</strong>-必输项！</label> <input id="title" name="title" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="summary"><span class="icon-chevron-right"></span><strong>主题描述</strong>-必输项！</label>
+			<textarea rows="2" id="summary" name="summary" class="span12" required="required"></textarea>
+		</div>
+		<div class="control-group">
+			<label for="content"><span class="icon-chevron-right"></span><strong>主题内容</strong>-必输项！</label>
+			<div>
+				<textarea id="content" name="content" class="span12" style="height: 150px" required="required"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="control-group radius-form-buttons">
+		<div class="pull-right">
+			<button id="btn-clean-style" class="btn">清除样式</button>
+			<button type="submit" class="btn btn-primary">提交保存</button>
+		</div>
+	</div>
+</form>
+<% include ./inc/inc-ueditor %>
+<% include ./inc/inc-tmpt-foot %>

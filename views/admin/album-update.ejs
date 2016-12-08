@@ -1,0 +1,103 @@
+<% include ./inc/inc-tmpt-head %>
+<style type="text/css">
+.radius-block:after {
+	content: "<%= title %>";
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#topic-form").submit(function(e) {
+			e.preventDefault();
+			jQuery.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/admin/album-update-<%= topic.id %>.html",
+				data: $("#topic-form").serialize(),
+				beforeSend: function() {
+					fadeProgressModal(true);
+				},
+				success: function(result) {
+					fadeProgressModal(false);
+
+					if(result.success) {
+						fadeSuccessModal(result);
+						$("#title").val("");
+						$("#mpath").val("");
+						$("#summary").val("");
+					} else {
+						fadeFailureModal(result);
+					}
+				}
+			});
+		});
+		
+		$("#image-form").submit(function(e) {
+			e.preventDefault();
+			jQuery.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/admin/image-create-<%= topic.id %>.html",
+				data: $("#image-form").serialize(),
+				beforeSend: function() {
+					fadeProgressModal(true);
+				},
+				success: function(result) {
+					fadeProgressModal(false);
+
+					if(result.success) {
+						fadeSuccessModal(result);
+						$("#image").val("");
+					} else {
+						fadeFailureModal(result);
+					}
+				}
+			});
+		});
+	});
+</script>
+<form id="topic-form" name="topic-form" class="form-horizontal" method="post">
+	<div class="radius-block">
+		<input id="catg" name="catg" type="hidden" value="<%= topic.catg||'' %>" />
+		<div class="control-group">
+			<label for="title"><span class="icon-chevron-right"></span><strong>相册标题</strong>-必输项！</label> <input id="title" name="title" value="<%= topic.title||'' %>" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="mpath"><span class="icon-chevron-right"></span><strong>相册封面</strong>-必输项，相册封面相对路径！</label> <input id="mpath" name="mpath" value="<%= topic.mpath||'' %>" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="summary"><span class="icon-chevron-right"></span><strong>相册描述</strong>-必输项！</label>
+			<textarea rows="2" id="summary" name="summary" class="span12" required="required"><%= topic.summary||'' %></textarea>
+		</div>
+	</div>
+	<div class="control-group radius-form-buttons">
+		<div class="pull-right">
+			<button type="submit" class="btn btn-primary">提交保存</button>
+		</div>
+	</div>
+</form>
+<div class="well">
+	<form id="image-form" name="image-form" class="form-horizontal" method="post">
+		<div class="control-group">
+			<label for="image"><span class="icon-chevron-right"></span><strong>新增图片：</strong></label> <input id="image" name="image" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="itext"><span class="icon-chevron-right"></span><strong>图片描述</strong>-选填项！</label>
+			<textarea rows="2" id="itext" name="itext" class="span12"><%= topic.summary||'' %></textarea>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-primary">提交保存</button>
+		</div>
+	</form>
+</div>
+<div class="well">
+	<div class="control-group">
+		<label><span class="icon-chevron-right"></span><strong>相册图片：</strong></label>
+		<div>
+			<a href="">/2013/ChinaJoy-01.jpg</a>
+		</div>
+		<div>
+			<a href="">/2013/ChinaJoy-01.jpg</a>
+		</div>
+	</div>
+</div>
+<% include ./inc/inc-tmpt-foot %>

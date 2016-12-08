@@ -1,0 +1,96 @@
+
+<% include ./inc/inc-front-head %>
+<style type="text/css">
+.radius-block:after {
+	content: "发表评论";
+}
+</style>
+<div class="blog">
+	<div class="container">
+		<div class="row">
+			<div class="span8">
+				<% include ./inc/inc-adv01 %>
+				<div class="entry">
+					<h2><%= topic.title||'' %></h2>
+					<p class="meta">
+						<i class="icon-calendar"></i> <%= dateFormat(topic.gmt_modify) %>
+						- <i class="icon-user"></i> 老牛啊
+						<% if(!vclean) { %>
+						- <i class="icon-film"></i> <%= topic.visit %>
+						- <i class="icon-comment"></i> <a href="#respond"><%= topic.reply %></a>
+						<% } %>
+					</p>
+					<p><%= topic.summary||'' %></p>
+					<p>
+						<%- topic.content||'' %>
+					</p>
+				</div>
+				<% include ./inc/inc-adv02 %>
+				<% if(!vclean) { %>
+				<div class="comments">
+					<ul class="commentlist">
+						<% replys.forEach(function(reply) { %>
+						<li class="comment even thread-even depth-1" id="comment-<%= reply.id %>">
+							<div class="the-comment">
+								<div class="avatar pull-left">
+									<img src="http://www.gravatar.com/avatar/<%= md5(reply.uemail) %>?s=54" class="avatar avatar-54 photo" height="54" width="54" />
+									<div class="clearfix"></div>
+								</div>
+								<div class="comment-box">
+									<div class="comment-author meta">
+										<% if (reply.usite == '') { %>
+										<strong><%= reply.uname %></strong>
+										<%= datetimeFormat(reply.gmt_modify) %></a>
+										<% } else { %>
+										<strong><a href="<%= reply.usite %>" rel='external nofollow' class='url'><%= reply.uname %></a></strong>
+										<%= dateFormat(reply.gmt_modify) %></a>
+										<% } %>
+									</div>
+									<div class="comment-text">
+										<p><%= reply.content %></p>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<% }); %>
+					</ul>
+				</div>
+				<a name="respond"></a>
+				<form id="reply-form" class="form-horizontal" name="reply-form" method="post" action="./topic-reply">
+					<div class="radius-block">
+						<div class="control-group">
+							<label for="uname"><span class="icon-chevron-right"></span><strong>您的名称</strong>-必选项！</label> <input id="uname" name="uname" class="span7" type="text" required />
+						</div>
+						<div class="control-group">
+							<label for="uemail"><span class="icon-chevron-right"></span><strong>您的电子邮箱</strong>-必输项，显示头像(gravatar.com)使用！</label> <input id="uemail" name="uemail" class="span7" type="email" required />
+						</div>
+						<div class="control-group">
+							<label for="usite"><span class="icon-chevron-right"></span><strong>您的网站</strong>-非必输项，可以留空！</label> <input id="usite" name="usite" class="span7" type="text" />
+						</div>
+						<div class="control-group">
+							<label for="content"><span class="icon-chevron-right"></span><strong>您想说的话</strong>-必输项！</label>
+							<textarea id="content" name="content" class="span7" rows="4" required></textarea>
+						</div>
+					</div>
+					<input type="hidden" name="ufrom" id="ufrom" />
+					<input type="hidden" name="topic" value="<%= topic.id||'' %>" />
+					<input type="hidden" name="title" value="<%= topic.title||'' %>" />
+					<div class="control-group radius-form-buttons">
+						<button type="submit" class="btn btn-primary">发表评论</button>
+					</div>
+				</form>
+				<% } %>
+			</div>
+			<div class="span4">
+				<% include ./inc/inc-front-slide %>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#ufrom").val(window.location.href);
+	});
+</script>
+<% include ./inc/inc-front-foot %>

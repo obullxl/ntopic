@@ -1,0 +1,29 @@
+<% include ./inc/inc-tmpt-head %>
+<% if (typeof(users) === "undefined" || users.length <= 0) { %>
+	<div class="alert alert-info">哎呀，还没有任何用户信息，请先<strong><a href="/admin/users-create.html">创建</a></strong>一个吧！</div>
+<% } else { %>
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th class="span1"><div class="text-center">#</div></th>
+				<th><div class="text-center">用户名</div></th>
+				<th><div class="text-center">电子邮件</div></th>
+				<th><div class="text-center">更新时间</div></th>
+				<th><div class="text-center">操作</div></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% users.forEach(function(user) { %>
+			<tr>
+				<td><div class="text-center"><%= user.id %></div></td>
+				<td><div class="text-center"><%= user.uname %></div></td>
+				<td><div class="text-center"><%= user.uemail %></div></td>
+				<td><div class="text-center"><%= dateFormat(user.gmt_modify) %></div></td>
+				<td><div class="text-center"></div></td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
+<% } %>
+
+<% include ./inc/inc-tmpt-foot %>

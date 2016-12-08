@@ -1,0 +1,18 @@
+<% include ./inc/inc-tmpt-head %>
+<style type="text/css">
+.article-title {
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.radius-block:after {
+	content: "<%= topic.title || ('查看主题'+tpcId) %>";
+}
+</style>
+<div class="radius-block">
+	<div class="article-title"><%= topic.title||'' %></div>
+	<hr />
+	<div><%- topic.content||'' %></div>
+</div>
+<% include ./inc/inc-tmpt-foot %>

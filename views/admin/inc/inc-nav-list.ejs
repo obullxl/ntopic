@@ -1,0 +1,27 @@
+<div class="span3">
+	<div class="well side-nav-fixed">
+		<ul class="nav nav-list">
+			<li class="nav-header"><span class="icon-home"></span> 系统管理</li>
+			<li id="vpage-homepage"><a href="/" target="_blank">系统首页</a></li>
+			<li id="vpage-system-evnargs"><a href="/admin/system-envargs.html">系统参数</a></li>
+			
+			<li class="nav-header"><span class="icon-user"></span> 用户管理</li>
+			<li id="vpage-user-create"><a href="/admin/user-create.html">新增用户</a></li>
+			<li id="vpage-user-manage"><a href="/admin/user-manage.html">用户管理</a></li>
+			
+			<li class="nav-header"><span class="icon-th-list"></span> 主题管理</li>
+			<li id="vpage-topic-create"><a href="/admin/topic-create.html">新增主题</a></li>
+			<li id="vpage-topic-manage"><a href="/admin/topic-manage.html">主题管理</a></li>
+			
+			<li class="nav-header"><span class="icon-th-list"></span> 主题管理</li>
+			<li id="vpage-album-create"><a href="/admin/album-create.html">新增相册</a></li>
+			<li id="vpage-album-manage"><a href="/admin/topic-manage.html?t=album">相册管理</a></li>
+		</ul>
+	</div>
+	<!--/.well -->
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#vpage-<%=vpage%>").attr("class", "active");
+});
+</script>

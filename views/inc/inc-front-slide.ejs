@@ -1,0 +1,19 @@
+<div class="sidebar">
+	<div class="widget">
+		<h3>推荐排行榜Top5</h3>
+		<ul>
+			<% topVisits.forEach(function(tpc) { %>
+			<li><a href="./topic-<%= tpc.catg %>-<%= tpc.id %>.html" rel="bookmark"><%= tpc.title %></a></li>
+			<% }); %>
+		</ul>
+	</div>
+	<% include ./inc-adv51 %>
+	<div class="widget">
+		<h3>评论排行榜Top5</h3>
+		<ul>
+			<% topReplys.forEach(function(tpc) { %>
+			<li><a href="./topic-<%= tpc.catg %>-<%= tpc.id %>.html" rel="bookmark"><%= tpc.title %></a></li>
+			<% }); %>
+		</ul>
+	</div>
+</div>

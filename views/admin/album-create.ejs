@@ -1,0 +1,56 @@
+<% include ./inc/inc-tmpt-head %>
+<style type="text/css">
+.radius-block:after {
+	content: "<%= title %>";
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#topicForm").submit(function(e) {
+			e.preventDefault();
+			jQuery.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "/admin/album-create.html",
+				data : $("#topicForm").serialize(),
+				beforeSend : function() {
+					fadeProgressModal(true);
+				},
+				success : function(result) {
+					fadeProgressModal(false);
+
+					if (result.success) {
+						fadeSuccessModal(result);
+						$("#title").val("");
+						$("#mpath").val("");
+						$("#summary").val("");
+					} else {
+						fadeFailureModal(result);
+					}
+				}
+			});
+		});
+	});
+</script>
+
+<form id="topicForm" class="form-horizontal" name="topicForm" method="post">
+	<div class="radius-block">
+		<input id="catg" name="catg" type="hidden" value="<%= catg||'' %>" />
+		<div class="control-group">
+			<label for="title"><span class="icon-chevron-right"></span><strong>相册标题</strong>-必输项！</label> <input id="title" name="title" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="mpath"><span class="icon-chevron-right"></span><strong>相册封面</strong>-必输项，相册封面相对路径！</label> <input id="mpath" name="mpath" class="span12" type="text" required="required" />
+		</div>
+		<div class="control-group">
+			<label for="summary"><span class="icon-chevron-right"></span><strong>相册描述</strong>-必输项！</label>
+			<textarea rows="2" id="summary" name="summary" class="span12" required="required"></textarea>
+		</div>
+	</div>
+	<div class="control-group radius-form-buttons">
+		<div class="pull-right">
+			<button type="submit" class="btn btn-primary">提交保存</button>
+		</div>
+	</div>
+</form>
+<% include ./inc/inc-tmpt-foot %>
