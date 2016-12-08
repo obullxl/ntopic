@@ -11,6 +11,6 @@ git remote rm destination
 git remote add origin https://github.com/obullxl/ntopic.git
 
 
-git commit 'INIT'
+git commit -m 'INIT'
 git push -u origin master
 ~~~
