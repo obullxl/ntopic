@@ -18,7 +18,7 @@ const errorhandler = require('errorhandler');
 
 const app = express();
 // app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
-app.set('port', config['app_port'] || 8080);
+app.set('port', config['app_port'] || 5000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
@@ -67,6 +67,6 @@ app.listen(app.get('port'), function() {
 	}
 	
 	console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++');
-	console.log('启动服务器完成，IP: '+ app.get('ip') +', Web端口: ' + app.get('port'));
+	console.log('启动服务器完成-Web端口: ' + app.get('port'));
 	console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++');
 });

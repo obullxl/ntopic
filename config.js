@@ -9,9 +9,11 @@ if(process.env.BAE_ENV_AK) {
 	catg = 'bae';
 } else if(process.env.OPENSHIFT_GEAR_NAME) {
 	catg = 'rhc';
+}else if(process.env.HEROKU) {
+	catg = 'heroku';
 }
 
-console.log('ntopic配置参数类型: %s', catg);
+console.log('NTopic配置参数类型: %s', catg);
 
 const config = require('./config-' + catg + '.js');
 module.exports = {
