@@ -25,7 +25,8 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(favicon("./favicon.png"));
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(methodOverride('_method'));
 app.use(cookieParser('ntopic'));
 app.use(session({
 	secret: 'ntopic',
@@ -41,6 +42,9 @@ if('development' == app.get('env')) {
 }
 
 /* ./routes/routes.js */
+// 管理员中间件
+app.use("/admin", require("./lib/mware-admin.js")());
+
 /* 前台页面 */
 var front = require('./routes/front');
 app.get('/', front.index);
@@ -88,9 +92,6 @@ app.get('/admin/album-update-:id.html', album.update);
 app.post('/admin/album-update-:id.html', album.update);
 
 app.post('/admin/image-create-:id.html', album.addImg);
-
-// 管理员中间件
-app.use("/admin", require("./lib/mware-admin.js")());
 
 /*
 app.get('/', function(req, res){

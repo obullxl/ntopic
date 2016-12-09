@@ -14,3 +14,15 @@ git remote add origin https://github.com/obullxl/ntopic.git
 git commit -m 'INIT'
 git push -u origin master
 ~~~
+
++ 忽略本地修改
+
+~~~
+git checkout .
+~~~
+
+~~~
+git fetch --all
+git reset --hard origin/master
+~~~
+
