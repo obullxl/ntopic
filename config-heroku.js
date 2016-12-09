@@ -4,7 +4,7 @@
  */
 module.exports = {
 	/* 端口 */
-	'app_port': process.env.PORT || 5000,
+	'app_port': process.env.PORT || process.env.APP_PORT || 5000,
 
 	/* 是否使用HTTPS */
 	'use_ssl': false,
@@ -14,16 +14,17 @@ module.exports = {
 	'static_host': 'http://obullxl.github.io',
 	
 	/* 数据库配置参数 */
-	'db_host': process.env.BAE_ENV_ADDR_SQL_IP,
-	'db_port': process.env.BAE_ENV_ADDR_SQL_PORT,
-	'db_name': 'XxSJRHDfpheLlikgBqSI',
-	'db_user': process.env.BAE_ENV_AK,
-	'db_passwd': process.env.BAE_ENV_SK,
+	'db_type': 'mysql',
+	'db_host': process.env.DB_HOST,
+	'db_port': process.env.DB_PORT,
+	'db_name': process.env.DB_NAME,
+	'db_user': process.env.DB_USER,
+	'db_passwd': process.env.DB_PASSWD,
 	
 	/* 日志配置 */
-	'log_type': 'console',
-	'log_level': 2,
+	'log_type': process.env.LOG_TYPE || 'console',
+	'log_level': process.env.LOG_LVEVEL || 1,
 	
-	/* 广告推荐显示开关 */
-	'ads_show': true
+	/* 广告配置 */
+	'ads_show': process.env.ADS_SHOW || false
 };

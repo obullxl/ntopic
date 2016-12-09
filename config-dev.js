@@ -15,7 +15,7 @@ module.exports = {
 	'static_host': 'http://obullxl.github.io',
 	
 	/* 数据库配置参数 */
-	'db_type': process.env.DB_TYPE || 'mysql',
+	'db_type': process.env.DB_TYPE || 'sqlite',
 	'db_file': process.env.DB_FILE || global.ROOT + '/ntopic.sqlite',
 
 	/* 日志配置 */

@@ -1,19 +1,3 @@
-
-ALTER TABLE atom_topic CHANGE visit_count visit bigint DEFAULT '0';
-ALTER TABLE atom_topic CHANGE reply_count reply bigint DEFAULT '0';
-
-ALTER TABLE atom_topic ADD state varchar(20) DEFAULT 'T' AFTER id;
-ALTER TABLE atom_topic ADD topt varchar(20) DEFAULT 'F' AFTER catg;
-ALTER TABLE atom_topic ADD rflag varchar(20) DEFAULT 'F' AFTER topt;
-ALTER TABLE atom_topic ADD rfrom varchar(255) AFTER rflag;
-
-ALTER TABLE atom_topic ADD mflag varchar(20) DEFAULT 'F' AFTER rfrom;
-ALTER TABLE atom_topic ADD mpath varchar(20) AFTER mflag;
-ALTER TABLE atom_topic CHANGE topt tflag varchar(20) DEFAULT 'F';
-
-ALTER TABLE atom_topic DROP COLUMN poster_id;
-ALTER TABLE atom_topic DROP COLUMN poster_name;
-
 /**
  * 用户数据表
  */
@@ -27,7 +11,8 @@ CREATE TABLE atom_user (
   UNIQUE KEY atom_user_uname_u (uname)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-INSERT INTO atom_user(uname, passwd, uemail, gmt_create, gmt_modify) VALUES("老牛啊", "21218cca77804d2ba1922c33e0151105", "obullxl@gmail.com", NOW(), NOW());
+INSERT INTO atom_user(uname, passwd, uemail, gmt_create, gmt_modify) VALUES("admin", "21218cca77804d2ba1922c33e0151105", "obullxl@163.com", NOW(), NOW());
+INSERT INTO atom_user(uname, passwd, uemail, gmt_create, gmt_modify) VALUES("ntopic", "21218cca77804d2ba1922c33e0151105", "ntopic.cn@gmail.com", NOW(), NOW());
 
 /**
  * 主题数据表
@@ -65,8 +50,6 @@ CREATE TABLE atom_reply (
   gmt_create datetime,
   gmt_modify datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
-
-ALTER TABLE atom_reply CHANGE uemail uemail varchar(255) DEFAULT '';
 
 /**
  * 图片数据表
