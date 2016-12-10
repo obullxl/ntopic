@@ -32,7 +32,7 @@ git reset --hard origin/master
 git config --global credential.helper store
 ~~~
 
-这一步会在当前用户HOME目录下的.gitconfig文件最后添加：
+这一步会在当前用户HOME目录下的`~/.gitconfig`文件最后添加：
 
 ~~~
 [credential]
@@ -41,4 +41,4 @@ git config --global credential.helper store
 
 现在push你的代码 (`git push`), 这时会让你输入用户名密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码啦!
 
-这一步会在用户HOME目录下生成文件`.git-credential`记录用户名密码的信息.
+这一步会在用户HOME目录下生成文件`~/.git-credentials`记录用户名密码的信息.
