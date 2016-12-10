@@ -5,40 +5,36 @@ const config = require('./config');
 config['db_file'] = __dirname + '/ntopic.sqlite';
 
 /* 应用配置 */
-const uuidv4 = require('uuid/v4');
-const express = require('express');
-const morgan = require('morgan')
-const favicon = require('serve-favicon');
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const serveStatic = require('serve-static');
-const errorhandler = require('errorhandler');
-
-const app = express();
+const app = require('express')();
 // app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 app.set('port', config['app_port'] || 5000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(morgan('dev'));
-app.use(favicon("./favicon.png"));
+app.use(require('morgan')('dev'));
+app.use(require('serve-favicon')("./favicon.png"));
+
+const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(methodOverride('_method'));
-app.use(cookieParser('ntopic'));
-app.use(session({
-	secret: 'ntopic',
-	cookie: { maxAge: 60000 },
+
+// app.use(require('method-override')('_method'));
+
+const secret = 'ntopic';
+app.use(require('cookie-parser')(secret));
+app.use(require('express-session')({
+	resave: false,
+	secret: secret,
+	cookie: { maxAge: 3600000 },
+	saveUninitialized: true,
 	genid: function(req) {
-    	return uuidv4(); 
+    	return require('uuid/v4')();
 	}
 }));
 
 /* 开发环境 */
 if('development' == app.get('env')) {
-	app.use(errorhandler());
+	app.use(require('errorhandler')());
 }
 
 /* ./routes/routes.js */
@@ -100,6 +96,8 @@ app.get('/', function(req, res){
 */
 
 // app.use(app.router);
+
+const serveStatic = require('serve-static');
 app.use(serveStatic(__dirname + '/public'));
 app.use(serveStatic(__dirname + '/upload'));
 

@@ -11,7 +11,7 @@ if (process.env.BAE_ENV_AK) {
     catg = 'rhc';
 } else if (process.env.HEROKU) {
     catg = 'heroku';
-} else if (process.env.MOPAAS) {
+} else if (process.env.VCAP_APP_PORT) {
     catg = 'mopaas';
 }
 
