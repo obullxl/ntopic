@@ -14,9 +14,10 @@ git remote add gitosc https://git.oschina.net/obullxl/ntopic.git
 
 git remote add ntopic https://github.com/obullxl/ntopic.git
 git remote set-url --add ntopic https://git.oschina.net/obullxl/ntopic.git
-git push ntopic --all
+git push -f ntopic --all
 
-git commit -m 'INIT'
+
+git commit -a -m 'INIT'
 git push -u github master
 git push -f github master && git push -f gitosc master
 ~~~
