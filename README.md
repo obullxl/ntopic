@@ -1,53 +1,85 @@
-OSN开源站点
+NT开源站点
 =============
 
-采用Node.js+Bootstrap构建，具有统一的展示效果；基于Apache v2 License，对使用者无任何约束；
++ 采用`Node.js`+`SemanticUI`构建，具有统一的展示效果；基于Apache v2 License，对使用者无任何约束；
 
-有问题或建议，请联系：[obullxl@gmail.com](obullxl@gmail.com)，或在百度云引擎演示站点留言：[http://obullxl.duapp.com](http://obullxl.duapp.com)
++ 有问题或建议，请联系：[obullxl@163.com](obullxl@163.com)，或在Heroku云站点留言：[http://ntopic.cn](http://ntopic.cn)
 
-1、OpenShift云效果：[https://obullxl-osnode.rhcloud.com](https://obullxl-osnode.rhcloud.com)，由于是免费的测试服务器，服务器不是很稳定，有时可能打不开或报错，请刷新一下即可；
++ ***Heroku***云效果：[http://ntopic.cn](http://ntopic.cn)，由于是免费的测试服务器，服务器性能不是特别好，响应时间稍长(经测算1~3秒左右)，请耐心等候即可
 
-2、百度云引擎效果：[http://obullxl.duapp.com](http://obullxl.duapp.com)，由于是免费的测试服务器，服务器不是很稳定，有时可能打不开或报错，请刷新一下即可；
++ ***OSC-MoPaas***云效果：http://ntopic.oschina.mopaasapp.com，本期望国内服务器响应要好，但很遗憾启动成功了，但是访问却异常`404 Not Found: Requested route ('ntopic.oschina.mopaasapp.com') does not exist.`，没有系统日志，想排查问题也无门
 
-3、阿里云引擎效果：[http://anode.aliapp.com](http://anode.aliapp.com)，由于是免费的测试服务器，服务器不是很稳定，有时可能打不开或报错，请刷新一下即可；
-
-4、在线功能版本发布说明：[http://obullxl.duapp.com/topic-blog-14.html](http://obullxl.duapp.com/topic-blog-14.html)，该页面会持续更新，敬请关注！
-
-OSN使用方法：
+NT使用方法：
 =============
 
-1、安装Node.js：[http://www.nodejs.org/dist/](http://www.nodejs.org/dist/) 找到最适合的版本。如果自己有空间，可以自主安装，建议选择最新版本；如果是使用的免费的托管，建议下载适合的版本；
++ 安装`Node.js`：[http://www.nodejs.org/dist/](http://www.nodejs.org/dist/) 找到最适合的版本，按照完成之后测试一下版本
 
-2、下载OSN源代码：[https://github.com/obullxl/osnode-site.git](https://github.com/obullxl/osnode-site.git)；
+~~~
+NT-MacBook:ntopic ntopic$ node -v
+v5.1.0
+NT-MacBook:ntopic ntopic$ npm -v
+4.0.3
+~~~
 
-3、安装数据表：运行OSN源代码根目录下upgrade目录下的db-xxx-vxxx.sql文件；
++ 下载NT源代码
+ - GitHub地址：[https://github.com/obullxl/ntopic.git](https://github.com/obullxl/ntopic.git)
+ - OSC码云地址：[https://git.oschina.net/obullxl/ntopic.git](https://git.oschina.net/obullxl/ntopic.git)
 
-4、修改配置参数：根据实际情况，修改数据库等配置参数，修改根目录下start.bat中参数值；
++ 数据库配置
+ - 数据建表文件：源代码目录`./lib/db.sql`文件
 
-5、启动OSN站点：运行跟目录下的start.bat即可；
++ 启动应用
+ - Windows系统，在源代码目录新建`start.bat`文件，内容如下：
 
-6、访问前端页面：[http://localhost](http://localhost)，看到的演示效果与[http://obullxl.duapp.com](http://obullxl.duapp.com)类似；
+~~~
+set APP_PORT=80 # 端口号
 
-7、访问后端页面：[http://localhost/admin](http://localhost/admin)，用户名和密码初始为 admin/888888
+set DB_TYPE=mysql
+set DB_HOST=localhost # MySQL域名
+set DB_PORT=3306
+set DB_NAME=ntopic # 数据库名
+set DB_USER=ntopic # 用户名
+set DB_PASSWD=secure # 密码
 
-后续计划V1.1
+node index.js
+~~~
+
+ - Linux/Mac系统，在源代码目录新建`start.sh`文件，内容如下：
+
+~~~
+#!/bin/bash
+export APP_PORT=3000
+
+export DB_TYPE=mysql
+set DB_HOST=localhost # MySQL域名
+set DB_PORT=3306
+set DB_NAME=ntopic # 数据库名
+set DB_USER=ntopic # 用户名
+set DB_PASSWD=secure # 密码
+
+node index.js
+~~~
+
+ - Windows在cmd运行`start.bat`，Linux/Mac在Console中运行`sudo ./start.sh`即可
+
++ 前端页面(`http://localhost:端口号`)
+ - Windows系统：[http://localhost](http://localhost)
+ - Linux/Mac系统：[http://localhost:3000](http://localhost:3000)
+
++ 后端页面(`http://localhost:端口号`/admin`)
+ - Windows系统：[http://localhost/admin](http://localhost/admin)
+ - Linux/Mac系统：[http://localhost:3000/admin](http://localhost:3000/admin)
+ - 初始用户名/密码：admin/888888
+
+待补充
 =============
 
-1、完善后台功能：美图管理、评论管理、用户管理、系统参数管理；
+1、系统功能
 
-2、完善前他功能：主题模板、回复能支持多级回复；
+2、系统架构
 
-3、增加静态页面功能；
+3、多云平台部署
 
-功能说明V1.0：
-=============
+4、二次开发
 
-1、前端采用目前最流行之一的Bootstrap构建，在PC、手机等设备浏览保持一致；
-
-2、发布简单，目前已经在本地、阿里云引擎、百度云引擎部署；
-
-3、根据不同的模块分不同的频道；
-
-4、功能丰富的后端（还在完善中……）；
-
-5、博客评论支持[http://www.gravatar.com](http://www.gravatar.com)全局头像；
+5、多主题
