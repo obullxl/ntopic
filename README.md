@@ -55,11 +55,11 @@ node index.js
 export APP_PORT=3000
 
 export DB_TYPE=mysql
-set DB_HOST=localhost # MySQL域名
-set DB_PORT=3306
-set DB_NAME=ntopic # 数据库名
-set DB_USER=ntopic # 用户名
-set DB_PASSWD=secure # 密码
+export DB_HOST=localhost # MySQL域名
+export DB_PORT=3306
+export DB_NAME=ntopic # 数据库名
+export DB_USER=ntopic # 用户名
+export DB_PASSWD=secure # 密码
 
 node index.js
 ~~~
