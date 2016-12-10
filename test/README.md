@@ -7,13 +7,18 @@ git commit --amend --reset-author
 
 
 git remote -v
-git remote rm destination
-git remote add origin https://github.com/obullxl/ntopic.git
+git remote rm origin
+git remote add github https://github.com/obullxl/ntopic.git
 git remote add gitosc https://git.oschina.net/obullxl/ntopic.git
 
+
+git remote add ntopic https://github.com/obullxl/ntopic.git
+git remote set-url --add ntopic https://git.oschina.net/obullxl/ntopic.git
+git push ntopic --all
+
 git commit -m 'INIT'
-git push -u origin master
-git push -f origin master && git push -f gitosc master
+git push -u github master
+git push -f github master && git push -f gitosc master
 ~~~
 
 + 忽略本地修改
