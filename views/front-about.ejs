@@ -1,3 +1,107 @@
 <% include ./inc/inc-front-head %>
 
+<h1 id="toc_0">NT开源站点</h1>
+<ul>
+    <li><p>采用<code>Node.js</code>+<code>SemanticUI</code>构建，具有统一的展示效果；基于Apache v2 License，对使用者无任何约束；</p></li>
+    <li><p>有任何问题或建议，请联系：<a href="obullxl@163.com">obullxl@163.com</a>，或在Heroku云站点留言：<a href="http://ntopic.cn">http://ntopic.cn</a></p></li>
+    <li><p><strong>Heroku</strong>云效果：<a href="http://ntopic.cn">http://ntopic.cn</a>，由于是免费的测试服务器，服务器性能不是特别好，响应时间稍长(经测算1~3秒左右)，请耐心等候即可</p></li>
+    <li><p><strong>OSC-MoPaas</strong>云效果：http://ntopic.oschina.mopaasapp.com，本期望国内服务器响应要好，但很遗憾启动成功了，但是访问却异常，没有系统日志，想排查问题也无门：</p></li>
+</ul>
+
+<div><pre><code class="language-none">404 Not Found: Requested route (&#39;ntopic.oschina.mopaasapp.com&#39;) does not exist.</code></pre></div>
+
+<h1 id="toc_1">NT使用方法：</h1>
+<ul>
+    <li>安装<code>Node.js</code>：<a href="http://www.nodejs.org/dist/">http://www.nodejs.org/dist/</a> 找到最适合的版本，按照完成之后测试一下版本</li>
+</ul>
+
+<div><pre><code class="language-none">NT-MacBook:ntopic ntopic$ node -v
+            v5.1.0
+            NT-MacBook:ntopic ntopic$ npm -v
+            4.0.3</code></pre></div>
+
+<ul>
+    <li><p>下载NT源代码</p>
+
+        <ul>
+            <li>GitHub地址：<a href="https://github.com/obullxl/ntopic.git">https://github.com/obullxl/ntopic.git</a></li>
+            <li>OSC码云地址：<a href="https://git.oschina.net/obullxl/ntopic.git">https://git.oschina.net/obullxl/ntopic.git</a></li>
+        </ul></li>
+    <li><p>数据库配置</p>
+
+        <ul>
+            <li>数据建表文件：源代码目录<code>./lib/db.sql</code>文件</li>
+        </ul></li>
+    <li><p>启动应用</p>
+
+        <ul>
+            <li>Windows系统，在源代码目录新建<code>start.bat</code>文件，内容如下：</li>
+        </ul></li>
+</ul>
+
+<div><pre><code class="language-none">set APP_PORT=80 # 端口号
+
+            set DB_TYPE=mysql
+            set DB_HOST=localhost # MySQL域名
+            set DB_PORT=3306
+            set DB_NAME=ntopic # 数据库名
+            set DB_USER=ntopic # 用户名
+            set DB_PASSWD=secure # 密码
+
+            node index.js</code></pre></div>
+
+<ul>
+    <li>Linux/Mac系统，在源代码目录新建<code>start.sh</code>文件，内容如下：</li>
+</ul>
+
+<div><pre><code class="language-none">#!/bin/bash
+            export APP_PORT=3000
+
+            export DB_TYPE=mysql
+            export DB_HOST=localhost # MySQL域名
+            export DB_PORT=3306
+            export DB_NAME=ntopic # 数据库名
+            export DB_USER=ntopic # 用户名
+            export DB_PASSWD=secure # 密码
+
+            node index.js</code></pre></div>
+
+<ul>
+    <li><p>Windows在cmd运行<code>start.bat</code>，Linux/Mac在Console中运行<code>sudo ./start.sh</code>即可</p></li>
+    <li><p>前端页面(<code>http://localhost:端口号</code>)</p>
+
+        <ul>
+            <li>Windows系统：<a href="http://localhost">http://localhost</a></li>
+            <li>Linux/Mac系统：<a href="http://localhost:3000">http://localhost:3000</a></li>
+        </ul></li>
+    <li><p>后端页面(<code>http://localhost:端口号</code>/admin`)</p>
+
+        <ul>
+            <li>Windows系统：<a href="http://localhost/admin">http://localhost/admin</a></li>
+            <li>Linux/Mac系统：<a href="http://localhost:3000/admin">http://localhost:3000/admin</a></li>
+            <li>初始用户名/密码：admin/888888</li>
+        </ul></li>
+</ul>
+
+<h1 id="toc_2">发布版本</h1>
+<ul>
+    <li>ntopic-v1.0.20161210
+
+        <ul>
+            <li>基本框架搭建：前台展示、后台增、删</li>
+        </ul></li>
+</ul>
+
+<h1 id="toc_3">待补充</h1>
+
+<p>1、系统功能</p>
+
+<p>2、系统架构</p>
+
+<p>3、多云平台部署</p>
+
+<p>4、二次开发</p>
+
+<p>5、多主题</p>
+
 <% include ./inc/inc-front-foot %>
