@@ -17,7 +17,7 @@ if (process.env.BAE_ENV_AK) {
 
 console.log('NTopic配置参数类型: %s', catg);
 
-const config = require('./config-' + catg + '.js');
+const config = require('./config/config-' + catg + '.js');
 module.exports = {
     /* 端口 */
     'app_port': config['app_port'] || process.env.PORT || process.env.APP_PORT,
