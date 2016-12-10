@@ -9,10 +9,11 @@ git commit --amend --reset-author
 git remote -v
 git remote rm destination
 git remote add origin https://github.com/obullxl/ntopic.git
-
+git remote add gitosc https://git.oschina.net/obullxl/ntopic.git
 
 git commit -m 'INIT'
 git push -u origin master
+git push -f origin master && git push -f gitosc master
 ~~~
 
 + 忽略本地修改
