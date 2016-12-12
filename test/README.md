@@ -14,6 +14,7 @@ git remote add gitosc https://git.oschina.net/obullxl/ntopic.git
 
 git remote add ntopic https://github.com/obullxl/ntopic.git
 git remote set-url --add ntopic https://git.oschina.net/obullxl/ntopic.git
+git remote set-url --add ntopic http://git.butterfly.mopaas.com/obullxl/ntopic.git
 git push -f ntopic --all
 
 
