@@ -95,3 +95,31 @@ const execUpdate = function (options) {
  */
 exports.execUpdate = execUpdate;
 exports.execSelect = execUpdate;
+
+/**
+ * 根据字段和数据值组装过滤条件
+ *
+ * 字段和数据值:
+ * {
+ *   name: 'ntopic',
+ *   email: 'ntopic.cn@gmail.com'
+ * }
+ *
+ * 组装过滤条件:
+ * {
+ *   sql: name=? AND email=?,
+ *   args: ['ntopic', 'ntopic.cn@gmail.com']
+ * }
+ */
+
+/**
+ * 业务方法-根据ID获取数据记录
+ *
+ * 返回结果: callback(err, results)
+ */
+exports.fetchOne = function(table, fields, args, callback) {
+    const options = {
+
+    };
+
+};
