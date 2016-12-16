@@ -5,18 +5,18 @@
  */
 module.exports = {
 	/* 端口 */
-	'app_port': process.env.APP_PORT,
+	'app_port': 3000,
 
 	/* 是否使用HTTPS */
 	'use_ssl': false,
 	'web_protocal': 'http://',
 	
 	/* 静态资源 */
-	'static_host': 'http://obullxl.github.io',
+	'static_host': 'http://localhost:3000',
 	
 	/* 数据库配置参数 */
 	'db_type': process.env.DB_TYPE || 'sqlite',
-	'db_file': process.env.DB_FILE || global.ROOT + '/ntopic.sqlite',
+	'db_file': process.env.DB_FILE || global.ROOT + '/../ntopic.sqlite',
 
 	/* 日志配置 */
 	'log_type': 'console',

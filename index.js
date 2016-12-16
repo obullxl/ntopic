@@ -2,10 +2,12 @@
 
 /* 全局配置 */
 const config = require('./config');
-config['db_file'] = __dirname + '/ntopic.sqlite';
+config['db_file'] = __dirname + '/../ntopic.sqlite';
 
 /* 应用配置 */
-const app = require('express')();
+const express = require('express');
+
+const app = express();
 // app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 app.set('port', config['app_port'] || 5000);
 app.set('views', __dirname + '/views');
@@ -57,6 +59,7 @@ app.post("/topic-reply", front.reply);
 /* 登录页面 */
 var index = require('./routes/index.js');
 app.get('/login.html', index.login);
+app.get('/regist.html', index.regist);
 app.post('/login.html', index.login);
 app.get('/logout.html', index.logout);
 
@@ -98,8 +101,9 @@ app.get('/', function(req, res){
 // app.use(app.router);
 
 const serveStatic = require('serve-static');
-app.use(serveStatic(__dirname + '/public'));
-app.use(serveStatic(__dirname + '/upload'));
+app.use('/assets', express.static('assets'));
+app.use('/public', express.static('public'));
+app.use('/upload', express.static('upload'));
 
 // 创建服务端
 app.listen(app.get('port'), function() {

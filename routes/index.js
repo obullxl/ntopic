@@ -9,6 +9,12 @@ var crypto = require('crypto');
 var RUtil = require('./rutil');
 
 /**
+ * Web模板
+ */
+const LOGIN = "user-login";
+const REGIST = "user-regist";
+
+/**
  * 登录页面
  */
 exports.login = function(request, response) {
@@ -20,7 +26,7 @@ exports.login = function(request, response) {
 
 	// 登录页面
 	if(method.toUpperCase() === "GET") {
-		response.render('login', data);
+		response.render(LOGIN, data);
 	}
 
 	// 登录验证请求
@@ -34,7 +40,7 @@ exports.login = function(request, response) {
 			if(results.length <= 0) {
 				// 用户不存在
 				data.errDesp = "用户不存在！";
-				response.render("login", data);
+				response.render(LOGIN, data);
 			} else {
 				var tmpUser = results[0];
 				var passwd = request.body.passwd;
@@ -46,7 +52,7 @@ exports.login = function(request, response) {
 				} else {
 					// 用户密码错误
 					data.errDesp = "用户密码错误！";
-					response.render("login", data);
+					response.render(LOGIN, data);
 				}
 			}
 		});
@@ -59,4 +65,14 @@ exports.login = function(request, response) {
 exports.logout = function(request, response) {
 	request.session.admin = null;
 	response.redirect("/login.html");
+};
+
+/**
+ * 注册页面
+ */
+exports.regist = function(request, response) {
+	var data = RUtil.front_data(request);
+	data.title = '管理员登录';
+
+	response.render(REGIST, data);
 };

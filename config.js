@@ -20,14 +20,14 @@ console.log('NTopic配置参数类型: %s', catg);
 const config = require('./config/config-' + catg + '.js');
 module.exports = {
     /* 端口 */
-    'app_port': config['app_port'] || process.env.PORT || process.env.APP_PORT,
+    'app_port': config['app_port'] || process.env.PORT || process.env.APP_PORT || 3000,
 
     /* 是否使用HTTPS */
-    'use_ssl': config['use_ssl'] || false,
+    'use_ssl': config['use_ssl'] || process.env.USE_SSL || false,
     'web_protocal': config['web_protocal'] || 'http://',
 
     /* 静态资源 */
-    'static_host': config['static_host'] || 'http://obullxl.github.io',
+    'static_host': config['static_host'] || process.env.STATIC_HOST || 'http://obullxl.github.io',
 
     /* 数据库配置参数 */
     'db_type': config['db_type'] || process.env.DB_TYPE,
@@ -42,14 +42,14 @@ module.exports = {
     'db_conn_limit': 5,
 
     /* 日志配置 */
-    'log_type': config['log_type'] || 'console',
-    'log_level': config['log_level'] || 1, // 0-TRACE, 1-DEBUG, 2-INFO, 3-WARN, 4-ERROR, 5-FETAL
+    'log_type': config['log_type'] || process.env.LOG_TYPE || 'console',
+    'log_level': config['log_level'] || process.env.LOG_LEVEL || 1, // 0-TRACE, 1-DEBUG, 2-INFO, 3-WARN, 4-ERROR, 5-FETAL
 
     /* 缓存配置 */
     'cache_type': 'global',
 
     /* 广告推荐显示开关 */
-    'ads_show': config['ads_show'] || true,
+    'ads_show': config['ads_show'] || process.env.ADS_SHOW || true,
 
     'uploadPath': './upload/',
     'pageSize': 30
