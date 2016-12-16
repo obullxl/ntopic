@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[branch "master"]
+[remote "ntopic"]
+	url = https://github.com/obullxl/ntopic.git
+	fetch = +refs/heads/*:refs/remotes/ntopic/*
+	url = https://git.oschina.net/obullxl/ntopic.git
+	url = http://git.butterfly.mopaas.com/obullxl/ntopic.git
