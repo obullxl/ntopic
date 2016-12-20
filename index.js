@@ -92,6 +92,10 @@ app.post('/admin/album-update-:id.html', album.update);
 
 app.post('/admin/image-create-:id.html', album.addImg);
 
+/* 开发页面 */
+const webview = require('./routes/webview');
+app.all('/webview.html', webview.webview);
+
 /*
 app.get('/', function(req, res){
 	res.send('hello world');
@@ -100,7 +104,6 @@ app.get('/', function(req, res){
 
 // app.use(app.router);
 
-const serveStatic = require('serve-static');
 app.use('/assets', express.static('assets'));
 app.use('/public', express.static('public'));
 app.use('/upload', express.static('upload'));

@@ -1,0 +1,40 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background-size: cover;
+    -moz-background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
+    font-family: "PingFang SC", "Helvetica Neue", "Hiragino Sans GB", "Segoe UI", "Microsoft YaHei", "微软雅黑", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.nt-navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.nt-navbar-logo {
+    width: 32px;
+    height: 32px;
+}
+
+.nt-navbar-avatar {
+    width: 20px;
+    height: 20px;
+}
+
+.nt-login-box {
+    max-width: 400px;
+    min-width: 400px;
+}
+
+.nt-fixed-bottom {
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
