@@ -27,8 +27,8 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     height: 20px;
 }
 
-.nt-login-box {
-    max-width: 400px;
+.nt-uform-box {
+    max-width: 420px;
     min-width: 400px;
 }
 
@@ -37,4 +37,23 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     right: 0;
     left: 0;
     bottom: 0;
+}
+
+.nt-captcha-box {
+    max-width: 355px;
+    min-width: 335px;
+}
+
+.nt-captcha-input {
+    max-width: 230px;
+    min-width: 230px;
+}
+
+.nt-captcha-img {
+    height: 50px;
+    width: 95px;
+    cursor: pointer;
+    border: 1px solid rgba(50,58,69,.2);
+    border-radius: 5px;
+    margin-right: 7px;
 }

@@ -5,7 +5,7 @@ git pull -f
 sudo gem install bundler
 
 2、安装其他依赖：
-sudo bundle install
+bundle install
 
 3、重新编译文档：
 grunt docs

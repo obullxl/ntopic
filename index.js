@@ -95,6 +95,8 @@ app.post('/admin/image-create-:id.html', album.addImg);
 /* 开发页面 */
 const webview = require('./routes/webview');
 app.all('/webview.html', webview.webview);
+app.all('/forget/:page.html', webview.forget);
+app.all('/:page.html', webview.routes);
 
 /*
 app.get('/', function(req, res){

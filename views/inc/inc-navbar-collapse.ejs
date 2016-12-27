@@ -1,0 +1,60 @@
+<nav class="navbar navbar-full navbar-light nt-navbar clearfix">
+    <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#ntopic-navbar" aria-controls="ntopic-navbar" aria-expanded="false" aria-label="导航菜单"></button>
+    <div class="collapse navbar-toggleable-sm float-md-left" id="ntopic-navbar">
+        <ul class="nav navbar-nav">
+            <a class="navbar-brand hidden-sm-down" href="/index.html" data-toggle="tooltip" data-placement="bottom" title="首页">
+                <img class="nt-navbar-logo rounded" src="<%= static_host %>/assets/logo.png" />
+            </a>
+            <li class="nav-item hidden-md-up">
+                <a class="nav-link" href="/index.html" target="_top">首页</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav navbar-nav float-right">
+        <li class="navbar-divider"></li>
+        <% if(logined) { %>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="ntopic-nav-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="javascript:void(0);">
+                <img src="<%= static_host %>/assets/avatar.jpg" class="nt-navbar-avatar rounded-circle"/> <%= uname %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="ntopic-nav-user">
+                <a class="dropdown-item" href="#"><i class="fa fa-home" aria-hidden="true"></i> 我的主页</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> 个人设置</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/user-logout.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 退出登录</a>
+            </div>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+            <a class="nav-link" href="/webview.html?view=user-regist" target="_top">注册</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/webview.html?view=user-login" target="_top">登录</a>
+        </li>
+        <% } %>
+    </ul>
+    <!--
+    <form class="form-inline float-md-right hidden-sm-down">
+        <input class="form-control" type="text" placeholder="搜索">
+        <button class="btn btn-outline-success" type="submit">搜索</button>
+    </form>
+    -->
+    <!--
+    <a class="navbar-brand float-right hidden-md-up" href="/index.html" title="首页">
+        <img class="nt-navbar-img rounded" src="<%= static_host %>/assets/logo.png" />
+    </a>
+    -->
+    <!--
+    <ul class="nav navbar-nav float-right hidden-md-up">
+        <li class="nav-item">
+            <a class="nav-link" href="#">首页</a>
+        </li>
+    </ul>
+    -->
+</nav>
