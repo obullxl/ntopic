@@ -1,0 +1,32 @@
+<%# 找回密码-电子邮箱-第二步:设置新密码 %>
+<% include ../inc/inc-uform-head %>
+
+<% if(logined) { %>
+<% include ../inc/inc-uform-logon %>
+<% } else { %>
+<form method="get" action="./passwd-estep3.html">
+	<div class="form-group">
+		<p class="form-control-static text-primary text-center"><strong>ntopic@163.com</strong></p>
+		<input type="hidden" name="email" value="ntopic@163.com" required="required"/>
+		<p class="text-center"><small class="text-success"><i class="fa fa-check"></i> 重置密码邮件验证成功，请重新设置新密码！</small></p>
+	</div>
+	<div class="form-group">
+		<label for="passwd" class="text-muted">新密码<small>(长度为6到16个字符)</small></label>
+		<input class="form-control form-control-lg" type="password" name="passwd" placeholder="新密码" maxlength="16" required="required" autofocus="autofocus"/>
+	</div>
+	<div class="form-group">
+		<label for="repasswd" class="text-muted">重复新密码</label>
+		<input class="form-control form-control-lg" type="password" name="repasswd" placeholder="重复新密码" maxlength="16" required="required"/>
+	</div>
+	<div class="form-group">
+		<label for="captcha" class="text-muted">验证码 <small>(点击图片刷新验证码，字母不区分大小写)</small></label>
+		<div class="nt-captcha-box clearfix">
+			<input class="form-control form-control-lg nt-captcha-input float-left" type="text" name="captcha" value="" maxlength="10" required="required"/>
+			<img class="nt-captcha-img float-right" src="https://coding.net/api/getCaptcha?code=0.36907968505130095" onclick="javascript:this.src='https://coding.net/api/getCaptcha?code='+new Date().getTime();"/>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-lg btn-outline-danger btn-block">重置密码</button>
+</form>
+<% } %>
+
+<% include ../inc/inc-uform-foot %>

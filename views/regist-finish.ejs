@@ -1,0 +1,11 @@
+<%# 用户注册成功 %>
+<% include ./inc/inc-uform-head %>
+
+<% if(logined) { %>
+<% include ./inc/inc-uform-logon %>
+<% } else { %>
+<div class="alert alert-success text-center" role="alert"><i class="fa fa-check"></i> 恭喜您，会员注册成功！</div>
+<a href="/user-login.html" class="btn btn-lg btn-outline-danger btn-block">立即登录</a>
+<% } %>
+
+<% include ./inc/inc-uform-foot %>

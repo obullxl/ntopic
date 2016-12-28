@@ -1,31 +1,16 @@
 <%# 找回密码-选择找回工具 %>
+<% include ../inc/inc-uform-head %>
 
-<% include ../inc/inc-head %>
-
-<div class="container">
-	<div class="row rounded pt-3">
-		<div class="col hidden-md-down"></div>
-		<div class="col nt-uform-box">
-			<div class="card">
-				<div class="card-block">
-					<div class="text-center"><h3>找回密码</h3></div>
-					<hr class="my-4">
-					<% if(logined) { %>
-					<% include ../inc/inc-nav-profile %>
-					<% } else { %>
-					<form method="get" action="./passwd-estep1.html?email=ntopic@163.com">
-						<div class="form-group">
-							<label for="email" class="text-muted">电子邮箱</label>
-							<input class="form-control form-control-lg" type="email" name="email" placeholder="ntopic@163.com" maxlength="32" required="required" autofocus="autofocus"/>
-						</div>
-						<button type="submit" class="btn btn-lg btn-outline-danger btn-block">下一步</button>
-					</form>
-					<% } %>
-				</div>
-			</div>
-		</div>
-		<div class="col hidden-md-down"></div>
+<% if(logined) { %>
+<% include ../inc/inc-uform-logon %>
+<% } else { %>
+<form method="get" action="./passwd-estep1.html">
+	<div class="form-group">
+		<label for="email" class="text-muted">电子邮箱</label>
+		<input class="form-control form-control-lg" type="email" name="email" placeholder="ntopic@163.com" maxlength="32" required="required" autofocus="autofocus"/>
 	</div>
-</div>
+	<button type="submit" class="btn btn-lg btn-outline-danger btn-block">下一步</button>
+</form>
+<% } %>
 
-<% include ../inc/inc-foot %>
+<% include ../inc/inc-uform-foot %>

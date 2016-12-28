@@ -1,0 +1,11 @@
+<%# 找回密码-电子邮箱-第三步:新密码重置成功 %>
+<% include ../inc/inc-uform-head %>
+
+<% if(logined) { %>
+<% include ../inc/inc-uform-logon %>
+<% } else { %>
+<div class="alert alert-success text-center" role="alert"><i class="fa fa-check"></i> 新密码设置成功，请重新登录！</div>
+<a href="/user-login.html" class="btn btn-lg btn-outline-danger btn-block">重新登录</a>
+<% } %>
+
+<% include ../inc/inc-uform-foot %>
