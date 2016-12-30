@@ -27,6 +27,12 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     height: 20px;
 }
 
+.nt-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nt-uform-box {
     max-width: 420px;
     min-width: 400px;
@@ -53,7 +59,7 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     height: 50px;
     width: 95px;
     cursor: pointer;
-    border: 1px solid rgba(50,58,69,.2);
+    border: 1px solid rgba(50, 58, 69, .2);
     border-radius: 5px;
     margin-right: 7px;
 }
