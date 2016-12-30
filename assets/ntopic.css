@@ -12,6 +12,17 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
     -webkit-font-smoothing: antialiased;
 }
 
+.nt-body {
+    display: flex;
+    display: -webkit-flex; /* Safari */
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.nt-body-content {
+    flex: 1;
+}
+
 .nt-navbar {
     background-color: #fff;
     border-bottom: 1px solid #E2E2E2;
@@ -29,6 +40,7 @@ body, button, input, select, textarea, h1, h2, h3, h4, h5, h6 {
 
 .nt-center {
     display: flex;
+    display: -webkit-flex; /* Safari */
     justify-content: center;
     align-items: center;
 }
